@@ -1,0 +1,23 @@
+{
+  "name": "tricor-bpa-prototype",
+  "version": "0.0.1",
+  "description": "tricor bpa prototype deliverable",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "express": "^4.13.0",
+    "source-map-support": "^0.3.2"
+  },
+  "devDependencies": {
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-nodemon": "^2.0.3",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-typescript": "^2.7.7",
+    "typescript": "^1.5.0-beta"
+  }
+}
