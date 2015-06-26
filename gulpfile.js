@@ -4,7 +4,6 @@ var gulp = require("gulp");
 var ts = require("gulp-typescript");
 var sourceMaps = require('gulp-sourcemaps');
 var del = require('del');
-var gls = require('gulp-live-server');
 var nodemon = require('gulp-nodemon');
 
 gulp.task('serve', ['build-server'], function() {
