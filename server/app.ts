@@ -3,6 +3,8 @@ require('source-map-support').install();
 
 import * as express from 'express';
 
+console.log("Current process directory", process.cwd());
+
 let app = express()
 app.get("/", (req, res) => {
 	res.send("hello world!");

@@ -43,6 +43,8 @@ gulp.task('clean', function() {
 	});
 });
 
+gulp.task('test', ['build-server']);
+
 gulp.task('build', ['build-server']);
 
 gulp.task('default', ['watch-build', 'serve']);
