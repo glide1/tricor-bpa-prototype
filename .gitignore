@@ -62,3 +62,6 @@ node_modules
 
 #our project
 build
+
+.tmp
+libs
