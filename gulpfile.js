@@ -135,7 +135,7 @@ gulp.task('build', ['build-server', 'jshint', 'html', 'images', 'fonts', 'extras
     return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
-gulp.task('default', ['watch-build', 'serve']);
+gulp.task('default', ['watch-build', 'styles', 'serve']);
 
 gulp.task('build-server', function() {
   var tsProject = ts.createProject('tsconfig.json', { typescript: require('typescript'), sourceMap: true, sortOutput: true });
