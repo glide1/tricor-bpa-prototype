@@ -5,12 +5,10 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var ts = require("gulp-typescript");
 var sourceMaps = require('gulp-sourcemaps');
-var del = require('del');
-var nodemon = require('gulp-nodemon');
 var sass = require('gulp-sass');
 
 gulp.task('styles', function () {
-    return gulp.src('app/styles/main.scss')
+    return gulp.src('client/styles/main.scss')
         .pipe($.plumber())
         .pipe(sass({
             style: 'expanded',
@@ -21,7 +19,7 @@ gulp.task('styles', function () {
 });
 
 gulp.task('jshint', function () {
-    return gulp.src('app/scripts/**/*.js')
+    return gulp.src('client/scripts/**/*.js')
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish'))
         .pipe($.jshint.reporter('fail'));
@@ -32,9 +30,9 @@ gulp.task('html', ['styles'], function () {
     var cssChannel = lazypipe()
         .pipe($.csso)
         .pipe($.replace, 'libs/bootstrap-sass-official/assets/fonts/bootstrap', 'fonts');
-    var assets = $.useref.assets({searchPath: '{.tmp,app}'});
+    var assets = $.useref.assets({searchPath: '{.tmp,client}'});
 
-    return gulp.src('app/*.html')
+    return gulp.src('client/*.html')
         .pipe(assets)
         .pipe($.if('*.js', $.uglify()))
         .pipe($.if('*.css', cssChannel()))
@@ -45,7 +43,7 @@ gulp.task('html', ['styles'], function () {
 });
 
 gulp.task('images', function () {
-    return gulp.src('app/images/**/*')
+    return gulp.src('client/images/**/*')
         .pipe($.cache($.imagemin({
             progressive: true,
             interlaced: true
@@ -54,7 +52,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-    return gulp.src(require('main-bower-files')().concat('app/fonts/**/*'))
+    return gulp.src(require('main-bower-files')().concat('client/fonts/**/*'))
         .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
         .pipe($.flatten())
         .pipe(gulp.dest('dist/fonts'));
@@ -62,8 +60,8 @@ gulp.task('fonts', function () {
 
 gulp.task('extras', function () {
     return gulp.src([
-        'app/*.*',
-        '!app/*.html',
+        'client/*.*',
+        '!client/*.html',
         'node_modules/apache-server-configs/dist/.htaccess'
     ], {
         dot: true
@@ -78,11 +76,11 @@ gulp.task('clean', require('del').bind(null, ['.tmp', 'dist/*', 'build/*']));
     var app = require('connect')()
         .use(require('connect-livereload')({port: 35729}))
         .use(serveStatic('.tmp'))
-        .use(serveStatic('app'))
+        .use(serveStatic('client'))
         // paths to libs should be relative to the current file
-        // e.g. in app/index.html you should use ../libs
+        // e.g. in client/index.html you should use ../libs
         .use('/libs', serveStatic('libs'))
-        .use(serveIndex('app'));
+        .use(serveIndex('client'));
 
     require('http').createServer(app)
         .listen(9000)
@@ -109,13 +107,13 @@ gulp.task('serve', ['build-server', 'watch'], function () {
 gulp.task('wiredep', function () {
     var wiredep = require('wiredep').stream;
 
-    gulp.src('app/styles/*.scss')
+    gulp.src('client/styles/*.scss')
         .pipe(wiredep())
-        .pipe(gulp.dest('app/styles'));
+        .pipe(gulp.dest('client/styles'));
 
-    gulp.src('app/*.html')
+    gulp.src('client/*.html')
         .pipe(wiredep({exclude: ['bootstrap-sass-official']}))
-        .pipe(gulp.dest('app'));
+        .pipe(gulp.dest('client'));
 });
 
 gulp.task('watch', /*['connect'],*/ function () {
@@ -123,13 +121,13 @@ gulp.task('watch', /*['connect'],*/ function () {
 
     // watch for changes
     gulp.watch([
-        'app/*.html',
+        'client/*.html',
         '.tmp/styles/**/*.css',
-        'app/scripts/**/*.js',
-        'app/images/**/*'
+        'client/scripts/**/*.js',
+        'client/images/**/*'
     ]).on('change', $.livereload.changed);
 
-    gulp.watch('app/styles/**/*.scss', ['styles']);
+    gulp.watch('client/styles/**/*.scss', ['styles']);
     gulp.watch('bower.json', ['wiredep']);
 });
 
