@@ -6,6 +6,7 @@ cache:
   - node_modules
   
 before_deploy:
+  - bower install
   - npm run build
   - cp build/server/app.js server.js
 deploy:
