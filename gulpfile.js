@@ -1,6 +1,6 @@
 /* jshint node:true */
 'use strict';
-// generated on 2015-06-28 using generator-gulp-webapp 0.2.0
+
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var ts = require("gulp-typescript");
@@ -70,25 +70,6 @@ gulp.task('extras', function () {
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist/*', 'build/*']));
 
-/*gulp.task('connect', ['styles'], function () {
-    var serveStatic = require('serve-static');
-    var serveIndex = require('serve-index');
-    var app = require('connect')()
-        .use(require('connect-livereload')({port: 35729}))
-        .use(serveStatic('.tmp'))
-        .use(serveStatic('client'))
-        // paths to libs should be relative to the current file
-        // e.g. in client/index.html you should use ../libs
-        .use('/libs', serveStatic('libs'))
-        .use(serveIndex('client'));
-
-    require('http').createServer(app)
-        .listen(9000)
-        .on('listening', function () {
-            console.log('Started connect web server on http://localhost:9000');
-        });
-});*/
-
 gulp.task('serve', ['build-server', 'watch'], function () {
     require('gulp-nodemon')({
         script: 'build/server/app.js',
@@ -116,7 +97,7 @@ gulp.task('wiredep', function () {
         .pipe(gulp.dest('client'));
 });
 
-gulp.task('watch', /*['connect'],*/ function () {
+gulp.task('watch', function () {
     $.livereload.listen();
 
     // watch for changes
