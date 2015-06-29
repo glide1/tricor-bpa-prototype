@@ -112,9 +112,11 @@ gulp.task('watch', function () {
     gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('build', ['build-server', 'jshint', 'html', 'images', 'fonts', 'extras'], function () {
+gulp.task('build', ['build-server', 'html', 'images', 'fonts', 'extras'], function () {
     return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
+
+gulp.task('lint', ['build', 'jshint']);
 
 gulp.task('default', ['watch-build', 'styles', 'serve']);
 

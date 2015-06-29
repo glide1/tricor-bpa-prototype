@@ -4,6 +4,10 @@ node_js:
 cache:
   directories:
   - node_modules
+  
+before_deploy:
+  - npm run build
+  - cp build/server/app.js server.js
 deploy:
   provider: opsworks
   access_key_id: AKIAJSDKSCPUAFGJPOIA

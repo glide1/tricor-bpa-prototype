@@ -10,10 +10,17 @@ let app = express()
 app.use(require('connect-livereload')({
     port: 35729
   }));
-app.use(express.static('.tmp'));
-app.use(express.static('client'));
-app.use('/libs', express.static('libs'));
 
+
+if (process.env.NODE_ENV = 'production') {
+	app.use(express.static('dist'));
+	
+}
+else {
+	app.use(express.static('.tmp'));
+	app.use(express.static('client'));
+	app.use('/libs', express.static('libs'));
+}
 
 app.get("/api*", (req, res, next) => {
 	request.get('http://api.fda.gov/drug/event.json').pipe(res)
