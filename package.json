@@ -8,6 +8,10 @@
   },
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TRI-COR/tricor-bpa-prototype"
+  },
   "dependencies": {
     "express": "^4.13.0",
     "gulp": "^3.9.0",

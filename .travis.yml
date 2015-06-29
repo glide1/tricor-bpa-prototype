@@ -12,7 +12,7 @@ deploy:
   bucket: 'S3 Bucket'
   key: latest/tricor-bpa-prototype.zip
   bundle_type: zip
-  application: tricor-bpa-prototype
-  deployment_group: tricor-bpa-prototype-group
+  application: test_app
+  deployment_group: nodejs-app1
   on:
     repo: TRI-COR/tricor-bpa-prototype
