@@ -1,10 +1,10 @@
 /* jshint devel:true */
 (function () {
 
-    $('body').on('click', 'a', function (e) {
+    $('body').on('click', 'button', function (e) {
         e.preventDefault();
-        var href = $(this).attr('href');
-        if (href !== '#') {
+        var href = $('#url').val();
+        if (href !== '') {
             $.ajax({
                 url: href,
                 success: function(response) {
