@@ -4,9 +4,12 @@ node_js:
 cache:
   directories:
   - node_modules
-  
-before_deploy:
+
+before_script:
+  - npm install -g bower
   - bower install
+
+before_deploy:
   - npm run build
   - cp build/server/app.js server.js
 deploy:
