@@ -6,3 +6,4 @@
 /// <reference path="bootstrap/bootstrap.d.ts" />
 /// <reference path="jquery/jquery.d.ts" />
 /// <reference path="mithril/mithril.d.ts" />
+/// <reference path="http-proxy-middleware.d.ts" />
