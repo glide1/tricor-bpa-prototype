@@ -1,6 +1,6 @@
 ///<reference path="../typings/tsd.d.ts" />
 import * as express from 'express';
-import request = require('request');
+import * as request from 'request';
 require('source-map-support').install();
 
 console.log("Current process directory", process.cwd());

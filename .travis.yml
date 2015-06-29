@@ -1,7 +1,18 @@
 language: node_js
 node_js:
-  - "0.12"
-
-cache: 
-  directories: 
-    - node_modules
+- '0.12'
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: codedeploy
+  access_key_id: AKIAJSDKSCPUAFGJPOIA
+  secret_access_key:
+    secure: BsAzHR/hlzCaBlXtmtu6O9mSN42SE9O0/aJEdL6YSuiCcZa76sDqvI3mctpQtI27b/RUOWv5XKpMIykGlCCoffBw7ax1p3JqDSEj1sWrBqeEMivAF9/OIFWsyF70E8yTReReFp5+AanL6fMblO1ipk/1kG0Gmqg6BEDM/fa6x0sszfu0o3K4T1vmpqj22yFOl+n08dqLruipYf2HNQdtws3l0/bjworg1C3nw70JOXyDLxzhW6yYzAD9RM0NmSia6lJobMjDJzPys6gn78RqAV73C7IEcFRy1Lx3bZ67PA7M3A0bpG0zAu90rgW+mZPzQZg6xbCrtgblRhy92ilY1+uSmQR0MABp2eByChzMIa+Vzj3OH9sZzRZ8kV+mARBTksClm2Cyl7OK1Q0FrXnZk9yDx/jU4DAAjrcyOfC5QqeUi2N36r5lww3D3558CKZj9ChvkdaCCmTpf+u4QfOgrbBvJmmq7gVUfl4hv327YrOa3sBZ7RyfYqnvQ5KKMd0Ji1Zw3MlbUezR5tKo6y+bhMgfjif4KFxCeugaJkKT4QJqNe+R4P/5SRetcizwh4R6rEfTk7Fl6ZEBY8TkWHouvpzVocXxr2laa5SftUiMzkgA1RbK97XW+fo/ekr5SUynaYDqKYOCpkgwMOfNmdyko+EjwGqqS1Xv4CR4TN5TzjI=
+  bucket: 'S3 Bucket'
+  key: latest/tricor-bpa-prototype.zip
+  bundle_type: zip
+  application: tricor-bpa-prototype
+  deployment_group: tricor-bpa-prototype-group
+  on:
+    repo: TRI-COR/tricor-bpa-prototype
