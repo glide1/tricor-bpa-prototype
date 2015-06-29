@@ -1,0 +1,10 @@
+.git
+.settings
+node_modules
+LICENSE
+.editorconfig
+.gitattributes
+.gitignore
+.jshintrc
+.travis.yml
+README.md
