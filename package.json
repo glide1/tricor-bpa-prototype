@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "description": "tricor bpa prototype deliverable",
   "scripts": {
-    "postinstall": "bower install && npm run build && cp build/server/app.js server.js",
+    "postinstall": "bower install && npm run build",
     "serve": "gulp serve",
+    "start": "node build/server/app.js",
     "test": "gulp test",
     "build": "gulp build"
   },
+  "private": true,
   "author": "",
   "license": "MIT",
   "repository": {
