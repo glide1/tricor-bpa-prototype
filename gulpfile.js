@@ -6,6 +6,8 @@ var $ = require('gulp-load-plugins')();
 var ts = require("gulp-typescript");
 var sourceMaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
+var del = require('del');
+var nodemon = require('gulp-nodemon')
 
 gulp.task('styles', function () {
     return gulp.src('client/styles/main.scss')
@@ -68,10 +70,10 @@ gulp.task('extras', function () {
     }).pipe(gulp.dest('dist'));
 });
 
-gulp.task('clean', require('del').bind(null, ['.tmp', 'dist/*', 'build/*']));
+gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', 'build/*']));
 
 gulp.task('serve', ['build-server', 'watch'], function () {
-    require('gulp-nodemon')({
+    nodemon({
         script: 'build/server/app.js',
         ext: 'js html',
         env: { 'NODE_ENV': 'development' },

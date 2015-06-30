@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "bower": "^1.4.1",
+    "connect-livereload": "^0.5.3",
+    "del": "^1.2.0",
     "express": "^4.13.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^1.0.1",
@@ -25,9 +27,11 @@
     "gulp-flatten": "^0.0.4",
     "gulp-if": "^1.2.1",
     "gulp-imagemin": "^1.2.1",
+    "gulp-livereload": "^3.8.0",
     "gulp-jshint": "^1.5.3",
     "gulp-load-plugins": "^0.7.1",
     "gulp-minify-html": "^0.1.6",
+    "gulp-nodemon": "^2.0.3",
     "gulp-plumber": "^0.6.3",
     "gulp-replace": "^0.4.0",
     "gulp-sass": "^2.0.3",
@@ -37,8 +41,10 @@
     "gulp-uglify": "^1.0.1",
     "gulp-useref": "^1.0.2",
     "http-proxy-middleware": "0.0.5",
+    "jshint-stylish": "^1.0.0",
     "lazypipe": "^0.2.1",
     "lodash": "^3.9.3",
+    "main-bower-files": "^2.1.0",
     "node-sass": "^3.2.0",
     "request": "^2.58.0",
     "source-map-support": "^0.3.2",
@@ -46,12 +52,6 @@
     "wiredep": "^2.0.0"
   },
   "devDependencies": {
-    "connect-livereload": "^0.5.3",
-    "del": "^1.2.0",
-    "gulp-livereload": "^3.8.0",
-    "gulp-nodemon": "^2.0.3",
-    "jshint-stylish": "^1.0.0",
-    "main-bower-files": "^2.1.0"
   },
   "engines": {
     "node": ">0.12.5"
