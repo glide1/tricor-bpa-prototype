@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "tricor bpa prototype deliverable",
   "scripts": {
+    "postinstall": "bower install && npm run build && cp build/server/app.js server.js",
     "serve": "gulp serve",
     "test": "gulp test",
     "build": "gulp build"
@@ -14,6 +15,7 @@
     "url": "https://github.com/TRI-COR/tricor-bpa-prototype"
   },
   "dependencies": {
+    "bower": "^1.4.1",
     "express": "^4.13.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^1.0.1",
