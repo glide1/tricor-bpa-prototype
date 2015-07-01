@@ -154,7 +154,7 @@ gulp.task('build-tests', ['build-server'], function() {
     .pipe(gulp.dest('build'));       
 });
 
-gulp.task('unit-test', function() {
+gulp.task('unit-test', ['build-tests'], function() {
    var testGlob = 'build/test/unit/**/*.js';
    return gulp.src([testGlob], {read: false})
     .pipe($.debug({ title: 'unit-test' }))
@@ -163,10 +163,8 @@ gulp.task('unit-test', function() {
 });
 
 gulp.task('watch-unit-test', function() {
-   var testGlob = 'build/test/unit/**/*.js';
    var tsTestGlob = 'test/unit/**/*.ts';
-   gulp.watch([testGlob], ['unit-test']); 
-   gulp.watch([tsTestGlob], ['build-tests']);
+   gulp.watch([tsTestGlob], ['unit-test']);
 });
 
 gulp.task('watch-build', ['build-server'], function() {
