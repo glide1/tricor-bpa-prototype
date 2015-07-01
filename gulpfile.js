@@ -137,7 +137,7 @@ gulp.task('build-server', function() {
 
 var testTsProject = ts.createProject('tsconfig.json', { typescript: require('typescript'), sourceMap: true, sortOutput: true });
 
-gulp.task('build-tests', function() {
+gulp.task('build-tests', ['build-server'], function() {
     
    var tsProject = testTsProject;
    var testGlob = 'test/unit/**/*.ts';
@@ -173,6 +173,6 @@ gulp.task('watch-build', ['build-server'], function() {
   gulp.watch('server/**/*.ts', ['build-server']);
 });
 
-gulp.task('test', ['unit-test']);
+gulp.task('test', ['unit-test', 'build-tests']);
 
 gulp.task('ctest', ['build-tests', 'unit-test', 'watch-unit-test']);

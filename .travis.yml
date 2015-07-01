@@ -4,6 +4,7 @@ node_js:
 cache:
   directories:
   - node_modules
+  - libs
 deploy:
   provider: heroku
   api_key:
