@@ -1,6 +1,7 @@
 https://safe-basin-4405.herokuapp.com/
 
 [![Build Status](https://travis-ci.org/TRI-COR/tricor-bpa-prototype.svg)](https://travis-ci.org/TRI-COR/tricor-bpa-prototype)
+[![Dependency Status](https://david-dm.org/TRI-COR/tricor-bpa-prototype.svg)](https://david-dm.org/TRI-COR/tricor-bpa-prototype)
 
 #Prerequisites:
 
@@ -11,15 +12,15 @@ Node and npm are available on https://nodejs.org. Alternatively, use N or NVM to
 
 After cloning run
 
-`>npm install <project directory>`
+`> npm install <project directory>`
 
 To run the server run
 
-`cd <project directory> && npm run start`
+`> cd <project directory> && npm run start`
 
 For development you probably want gulp installed.
 
-`>npm install -g gulp`
+`> npm install -g gulp`
 
 Then run gulp from the project directory
 
