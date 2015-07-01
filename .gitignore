@@ -114,3 +114,6 @@ build
 .tmp
 libs
 dist
+
+#
+.envrc
