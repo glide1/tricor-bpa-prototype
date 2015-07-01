@@ -1,15 +1,13 @@
 {
     "compilerOptions": {
-        "version": true,
         "module": "commonjs",
         "target": "ES5",
-        "noImplicitAny": true,
         "removeComments": true,
-        "preserveConstEnums": true,
         "outDir": "build",
         "sourceMap": true
     },
     "files": [
-		"./server/app.ts"
+		"./server/app.ts",
+        "./server/fdaapiforward.ts"
     ]
 }

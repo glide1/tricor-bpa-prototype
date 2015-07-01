@@ -8,6 +8,7 @@ var sourceMaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var del = require('del');
 var nodemon = require('gulp-nodemon')
+var watch = require('gulp-watch');
 
 gulp.task('styles', function () {
     return gulp.src('client/styles/main.scss')
@@ -134,8 +135,44 @@ gulp.task('build-server', function() {
     .pipe(gulp.dest('build'));
 });
 
+var testTsProject = ts.createProject('tsconfig.json', { typescript: require('typescript'), sourceMap: true, sortOutput: true });
+
+gulp.task('build-tests', function() {
+    
+   var tsProject = testTsProject;
+   var testGlob = 'test/unit/**/*.ts';
+   
+   console.log("building changes on " + testGlob);
+   
+   var tsResult = gulp.src(testGlob)
+    .pipe($.debug({title:'build-tests'}))
+    .pipe(sourceMaps.init())
+    .pipe(ts(tsProject));
+   
+   return tsResult.js
+    .pipe(sourceMaps.write())
+    .pipe(gulp.dest('build'));       
+});
+
+gulp.task('unit-test', function() {
+   var testGlob = 'build/test/unit/**/*.js';
+   return gulp.src([testGlob], {read: false})
+    .pipe($.debug({ title: 'unit-test' }))
+    .pipe($.mocha({ reporter: 'spec' }))
+    .on('error', $.util.log);
+});
+
+gulp.task('watch-unit-test', function() {
+   var testGlob = 'build/test/unit/**/*.js';
+   var tsTestGlob = 'test/unit/**/*.ts';
+   gulp.watch([testGlob], ['unit-test']); 
+   gulp.watch([tsTestGlob], ['build-tests']);
+});
+
 gulp.task('watch-build', ['build-server'], function() {
   gulp.watch('server/**/*.ts', ['build-server']);
 });
 
-gulp.task('test', ['build-server']);
+gulp.task('test', ['unit-test']);
+
+gulp.task('ctest', ['build-tests', 'unit-test', 'watch-unit-test']);

@@ -1,13 +1,17 @@
 ///<reference path="../typings/tsd.d.ts" />
 import * as express from 'express';
 import * as request from 'request';
+import * as bodyparser from 'body-parser';
+import * as apiforward from './fdaapiforward';
+
 require('source-map-support').install();
 
 console.log("Current process directory", process.cwd());
 
 let app = express()
 
-
+app.use(bodyparser.urlencoded({ extended: false}));
+app.use(bodyparser.json());
 
 
 if (process.env.NODE_ENV = 'production') {
@@ -22,6 +26,9 @@ else {
 	app.use(express.static('client'));
 	app.use('/libs', express.static('libs'));
 }
+
+let forwarder = new apiforward.FdaApiForward("https://api.fda.gov");
+app.post("/api", forwarder.handle);
 
 app.get("/api*", (req, res, next) => {
 	request.get('http://api.fda.gov/drug/event.json').pipe(res)

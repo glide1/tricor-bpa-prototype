@@ -17,6 +17,7 @@
     "url": "https://github.com/TRI-COR/tricor-bpa-prototype"
   },
   "dependencies": {
+    "body-parser": "^1.13.1",
     "bower": "^1.4.1",
     "connect-livereload": "^0.5.3",
     "del": "^1.2.0",
@@ -29,10 +30,11 @@
     "gulp-flatten": "^0.1.0",
     "gulp-if": "^1.2.1",
     "gulp-imagemin": "^2.3.0",
-    "gulp-livereload": "^3.8.0",
     "gulp-jshint": "^1.5.3",
+    "gulp-livereload": "^3.8.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-minify-html": "^0.1.6",
+    "gulp-mocha": "^2.1.2",
     "gulp-nodemon": "^2.0.3",
     "gulp-plumber": "^0.6.3",
     "gulp-replace": "^0.5.3",
@@ -42,6 +44,7 @@
     "gulp-typescript": "^2.7.7",
     "gulp-uglify": "^1.0.1",
     "gulp-useref": "^1.0.2",
+    "gulp-watch": "^4.2.4",
     "http-proxy-middleware": "0.0.5",
     "jshint-stylish": "^2.0.1",
     "lazypipe": "^0.2.1",
@@ -54,6 +57,13 @@
     "wiredep": "^2.0.0"
   },
   "devDependencies": {
+    "chai": "^3.0.0",
+    "chance": "^0.7.6",
+    "gulp-debug": "^2.0.1",
+    "gulp-util": "^3.0.6",
+    "mocha": "^2.2.5",
+    "proxyquire": "^1.5.0",
+    "sinon": "^1.15.4"
   },
   "engines": {
     "node": ">0.12.5"
