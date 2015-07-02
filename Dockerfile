@@ -4,7 +4,9 @@ RUN mkdir -p /opt/app
 WORKDIR /opt/app
 ADD . /opt/app
 
-RUN npm install
+RUN npm install --unsafe-perm
+
+ENV NODE_ENV production
 
 EXPOSE 3000
 
