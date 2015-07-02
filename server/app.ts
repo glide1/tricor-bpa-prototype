@@ -14,7 +14,7 @@ app.use(bodyparser.urlencoded({ extended: false}));
 app.use(bodyparser.json());
 
 
-if (process.env.NODE_ENV = 'production') {
+if (process.env.NODE_ENV == 'production') {
 	app.use(express.static('dist'));
 	
 }
@@ -27,7 +27,7 @@ else {
 	app.use('/libs', express.static('libs'));
 }
 
-let forwarder = new apiforward.FdaApiForward("https://api.fda.gov");
+let forwarder = new apiforward.FdaApiForward("https://api.fda.gov/");
 app.post("/api", forwarder.handle);
 
 app.get("/api*", (req, res, next) => {

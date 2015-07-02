@@ -31,6 +31,7 @@ export class FdaApiForward {
 	
 	handle: express.RequestHandler = (req: express.Request, res: express.Response, next: Function) => {
 		let url = this.createGetString(req.body);
+		console.log("calling: "+ url);
 		request.get(url).pipe(res);
 	};
 	
