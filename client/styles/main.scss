@@ -1,15 +1,43 @@
-$icon-font-path: '../libs/bootstrap-sass-official/assets/fonts/bootstrap/';
+
+@import "lib/settings";
+@import "lib/mixins";
 
 // bower:scss
 @import "../../libs/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #eee;
+@import "lib/fonts";
+
+html, body {
+    overflow: hidden;
+    background-color: #eee;
 }
 
-.jumbotron {
-    text-align: center;
+header {
+
+}
+
+.logo {
+    @include font-nixie;
+    padding: .5em .3em;
+    font-size: 3em;
+    &:hover,
+    &:active {
+        text-decoration: none;
+    }
+}
+
+#result {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    &, textarea {
+        height: 70vh;
+    }
+    textarea {
+        resize: none;
+        border: none;
+        width: 100%;
+    }
 }
