@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 
 export interface ApiForwardRequest {
 	/**
-	 * the endpoint e.g. drug/topic
+	 * the endpoint e.g. drug/label
 	 */
 	endpoint: string,
 	search?: string,
