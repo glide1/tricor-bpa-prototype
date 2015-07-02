@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "tricor bpa prototype deliverable",
   "scripts": {
-    "postinstall": "bower install && npm run build",
+    "postinstall": "bower install --allow-root && npm run build",
     "serve": "gulp serve",
     "start": "node build/server/app.js",
     "test": "gulp test",
