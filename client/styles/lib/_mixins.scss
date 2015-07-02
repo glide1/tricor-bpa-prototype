@@ -1,0 +1,29 @@
+
+@import "settings";
+
+// Fonts
+
+@mixin typeface {
+    font-family: $typeface-name, sans-serif;
+}
+
+@mixin font-light {
+    @include typeface;
+    font-weight: 300;
+}
+
+@mixin font-regular {
+    @include typeface;
+    font-weight: 400;
+}
+
+@mixin font-bold {
+    @include typeface;
+    font-weight: 700;
+}
+
+@mixin font-nixie {
+    font-family: 'Nixie One', cursive;
+    font-style: normal;
+    font-weight: 400;
+}

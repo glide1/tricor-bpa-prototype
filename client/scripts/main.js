@@ -12,10 +12,10 @@
                 dataType: 'json',
                 data: JSON.stringify({ "endpoint": "drug/label", search: href }),
                 success: function(response) {
-                    $('#result').text(JSON.stringify(response));
+                    $('#result').html('<textarea disabled readonly>' + JSON.stringify(response, null, '    ') + '</textarea>');
                 }
             });
-        } else { 
+        } else {
             $('#result').text('No URL supplied.');
             setTimeout(function () {
                 $('#result').text('');
