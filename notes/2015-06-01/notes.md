@@ -1,3 +1,5 @@
+###Notes for 2015-06-01
+
 * Reviewed notes and understanding of API
 * Decided on abstract use case: finding drugs by entering/selecting symptoms
 ** The application would allow users to browse a collection of drugs, using symptoms as primary means of filtering
