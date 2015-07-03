@@ -1,30 +1,87 @@
+@charset "utf-8";
 
 @import "lib/settings";
 @import "lib/mixins";
-
-// bower:scss
-@import "../../libs/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
-
+@import "lib/bootstrap";
 @import "lib/fonts";
+@import "lib/sidebar";
+@import "lib/ionic";
 
 html, body {
     overflow: hidden;
-    background-color: #eee;
 }
 
-header {
+#app {
 
+    > header {
+        background-color: #fff;
+        position: absolute;
+        overflow: hidden;
+        width: 320px;
+        left: 0;
+        top: 0;
+    }
+
+    > main {
+
+    }
+
+}
+
+.symptoms-panel {
+    position: absolute;
+    background-color: #fff;
+    width: 320px;
+    top: 77px;
+    bottom: 0;
+    left: 0;
+}
+
+.your-symptoms {
+    @include panel-variant($panel-default-border, $panel-default-text, $panel-default-heading-bg, $panel-default-border);
+}
+
+.symptom-chooser {
+    .search {
+        position: relative;
+        border-top: 2px solid #ddd;
+        input {
+            width: 100%;
+            border: none;
+            outline: none;
+            display: block;
+            line-height: 55px;
+            padding: 0 10px;
+            height: 55px;
+        }
+        i {
+            top: 20px;
+            right: 10px;
+            cursor: pointer;
+            position: absolute;
+        }
+    }
+    .ionic {
+        .item {
+            border-left: none;
+            border-right: none;
+        }
+    }
 }
 
 .logo {
+
+    display: block;
     @include font-nixie;
     padding: .5em .3em;
-    font-size: 3em;
+    text-align: center;
+    font-size: 2em;
+
     &:hover,
     &:active {
         text-decoration: none;
     }
+
 }
 
 #result {
