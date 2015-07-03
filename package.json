@@ -16,6 +16,13 @@
     "type": "git",
     "url": "https://github.com/TRI-COR/tricor-bpa-prototype"
   },
+  "config": {
+    "ghooks": {
+      "pre-push": "npm test",
+      "post-merge": "npm install",
+      "post-rewrite": "npm install"
+    }
+  },
   "dependencies": {
     "body-parser": "^1.13.1",
     "bower": "^1.4.1",
@@ -59,6 +66,7 @@
   "devDependencies": {
     "chai": "^3.0.0",
     "chance": "^0.7.6",
+    "ghooks": "^0.3.2",
     "gulp-debug": "^2.0.1",
     "gulp-util": "^3.0.6",
     "mocha": "^2.2.5",

@@ -42,7 +42,7 @@ There are a couple commands that are important to run during development process
 * `gulp ctest`
   - Runs continuous testing. It sets up watchers and continuous runs tests on changes.
 
-## Open source 
+## Open source projects used 
 
 * [Nodejs](https://github.com/joyent/node)
 * [Express](https://github.com/strongloop/express)
@@ -53,7 +53,7 @@ There are a couple commands that are important to run during development process
 
 
 # Continuous Integration
-Continuous Integration is handled by travis-ci. Details are within the .travis.yml file.
+Continuous Integration is handled by travis-ci. Details are within the .travis.yml file. Travis CI automatically runs `npm test` which is setup in *package.json*. 
 
 # Continuous Deployment
 ## Heroku
@@ -78,6 +78,7 @@ Integrating with travis CI was done by following the [Heroku Deployment](http://
 
 ## AWS OpWorks
 
-AWS Opsworks was more involved to setup. The dependency on Node 0.12 means that the default [opsworks nodejs *layer*](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-servers.html) could not be used. There was also a requirement to use containers. So that led to:
+AWS Opsworks was more involved to setup. The dependency on Node 0.12 means that the default [opsworks nodejs layer](http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-servers.html) could not be used. There was also a requirement to use containers. So that led to:
 
 ### Setting up OpsWorks to use Docker
+
