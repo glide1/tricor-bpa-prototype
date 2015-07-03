@@ -1,4 +1,4 @@
-###Notes for 2015-06-01
+### Notes for 2015-06-01
 
 * Reviewed notes and understanding of API
 * Decided on abstract use case: finding drugs by entering/selecting symptoms

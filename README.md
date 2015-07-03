@@ -1,5 +1,5 @@
 https://safe-basin-4405.herokuapp.com/
-
+http://52.4.102.54/
 TRICor-BPA-prototype
 ====
 
@@ -49,7 +49,7 @@ There are a couple commands that are important to run during development process
 * [Gulp](https://github.com/gulpjs/gulp)
 * [Typescript](https://github.com/Microsoft/TypeScript)
 * [Bower](https://github.com/bower/bower)
-* and many others
+* and many others in package.json and bower.json
 
 
 # Continuous Integration
@@ -82,3 +82,25 @@ AWS Opsworks was more involved to setup. The dependency on Node 0.12 means that 
 
 ### Setting up OpsWorks to use Docker
 
+The main source of how to get OpsWorks and Docker running came from an [AWS blog post](https://blogs.aws.amazon.com/application-management/post/Tx2FPK7NJS5AQC5/Running-Docker-on-AWS-OpsWorks). There were some [chef recipes on github](https://github.com/coryflucas/opsworks-docker) that were modified with the installation code from the blog post. The result is in a [forked git repository](https://github.com/TRI-COR/opsworks-docker) that is used as a custom recipe source in AWS OpsWorks.
+
+#### Setting up OpsWorks
+
+1. Create a stack
+2. Create a Layer following the opsworks-docker readme (the Berkshelf version is very important) with the following changes:
+  * The short name needs to be "docker"
+  * Under Add a Layer > Recipes > Deploy: owdocker::docker-image-deploy is replaced with owdocker::docker-deploy.
+3. Create an App
+  * Use "Other" as the type
+  * Set the App source type to Git
+  * Set the repository url to https://github.com/TRI-COR/tricor-bpa-prototype
+  * Setup environment variables. They should match up with what's in the AWS blog post above. E.g.
+    * layer : docker
+    * service_port : 80
+    * container_port : 3000
+4. Add an instance to the "docker" layer:
+  * The instance type is mostly defaults except for the size. Ended up using c3.large instance. The smaller instances may not run well.
+
+#### Travis CI and OpsWorks
+
+Integrating with Travis CI was done following [OpsWorks deployment on Travis CI](http://docs.travis-ci.com/user/deployment/opsworks/). One special note is that the app-id is the OpsWorks ID of the App that was created in Step 3 above (it is a UUID).
