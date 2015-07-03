@@ -10,8 +10,8 @@
                 method: 'post',
                 contentType: 'application/json',
                 dataType: 'json',
-                data: JSON.stringify({ "endpoint": "drug/label", search: href }),
-                success: function(response) {
+                data: JSON.stringify({"endpoint": "drug/label", search: href}),
+                success: function (response) {
                     $('#result').html('<textarea disabled readonly>' + JSON.stringify(response, null, '    ') + '</textarea>');
                 }
             });
@@ -23,4 +23,36 @@
         }
     });
 
-}) ();
+    var $container = $('.st-container'),
+        CLASS = 'st-effect-3';
+
+    $('button').click(function (e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        $container.removeClass(CLASS);
+        $container.addClass(CLASS);
+        $container.addClass('st-menu-open');
+
+        document.addEventListener('click', bodyClickFn);
+
+    });
+
+    function bodyClickFn(evt) {
+        if (!hasParentClass(evt.target, 'st-menu')) {
+            $container.removeClass('st-menu-open');
+            document.removeEventListener('click', bodyClickFn);
+        }
+    }
+
+    function hasParentClass(e, classname) {
+        e = e.get ? e.get(0) : e;
+        if (e === document) return false;
+        if ($(e).hasClass(classname)) {
+            return true;
+        }
+        return e.parentNode && hasParentClass(e.parentNode, classname);
+    }
+
+})();
