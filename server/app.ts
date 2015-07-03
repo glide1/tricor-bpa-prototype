@@ -24,6 +24,7 @@ else {
   	}));
 	app.use(express.static('.tmp'));
 	app.use(express.static('client'));
+	app.use('/scripts', express.static('build/client/scripts'));
 	app.use('/libs', express.static('libs'));
 }
 

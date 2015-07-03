@@ -10,13 +10,17 @@ var del = require('del');
 var nodemon = require('gulp-nodemon')
 var watch = require('gulp-watch');
 
+var typescriptGlobs = ['./**/*.ts', '!typings/**/*.ts', '!libs/**/*.ts', '!node_modules/**'];
+var typescriptClientLocation = 'build/client/scripts/**/*.js';
+
 gulp.task('styles', function () {
     return gulp.src('client/styles/main.scss')
-        .pipe($.plumber())
+        .pipe($.debug({ title: 'styles'}))
         .pipe(sass({
             style: 'expanded',
+            errLogToConsole: true,
             precision: 10
-        }))
+        }).on('error', sass.logError))
         .pipe($.autoprefixer({browsers: ['last 1 version']}))
         .pipe(gulp.dest('.tmp/styles'));
 });
@@ -33,7 +37,7 @@ gulp.task('html', ['styles'], function () {
     var cssChannel = lazypipe()
         .pipe($.csso)
         .pipe($.replace, 'libs/bootstrap-sass-official/assets/fonts/bootstrap', 'fonts');
-    var assets = $.useref.assets({searchPath: '{.tmp,client}'});
+    var assets = $.useref.assets({searchPath: '{.tmp,client,build/client}'});
 
     return gulp.src('client/*.html')
         .pipe(assets)
@@ -73,7 +77,7 @@ gulp.task('extras', function () {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', 'build/*']));
 
-gulp.task('serve', ['build-server', 'watch'], function () {
+gulp.task('serve', ['build-typescript', 'watch'], function () {
     nodemon({
         script: 'build/server/app.js',
         ext: 'js html',
@@ -108,14 +112,15 @@ gulp.task('watch', function () {
         'client/*.html',
         '.tmp/styles/**/*.css',
         'client/scripts/**/*.js',
-        'client/images/**/*'
+        'client/images/**/*',
+        typescriptClientLocation
     ]).on('change', $.livereload.changed);
 
     gulp.watch('client/styles/**/*.scss', ['styles']);
     gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('build', ['build-server', 'html', 'images', 'fonts', 'extras'], function () {
+gulp.task('build', ['build-typescript', 'html', 'images', 'fonts', 'extras'], function () {
     return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
@@ -123,10 +128,11 @@ gulp.task('lint', ['build', 'jshint']);
 
 gulp.task('default', ['watch-build', 'styles', 'serve']);
 
-gulp.task('build-server', function() {
-  var tsProject = ts.createProject('tsconfig.json', { typescript: require('typescript'), sourceMap: true, sortOutput: true });
+var tsProject = ts.createProject('tsconfig.json', { typescript: require('typescript'), sourceMap: true, sortOutput: true });
 
-  var tsResult = tsProject.src()
+gulp.task('build-typescript', function() {
+  var tsResult = gulp.src(typescriptGlobs)
+    .pipe($.debug({ title: 'build-typescript' }))
     .pipe(sourceMaps.init())
     .pipe(ts(tsProject));
 
@@ -137,7 +143,7 @@ gulp.task('build-server', function() {
 
 var testTsProject = ts.createProject('tsconfig.json', { typescript: require('typescript'), sourceMap: true, sortOutput: true });
 
-gulp.task('build-tests', ['build-server'], function() {
+gulp.task('build-tests', ['build-typescript'], function() {
     
    var tsProject = testTsProject;
    var testGlob = 'test/unit/**/*.ts';
@@ -167,8 +173,8 @@ gulp.task('watch-unit-test', function() {
    gulp.watch([tsTestGlob], ['unit-test']);
 });
 
-gulp.task('watch-build', ['build-server'], function() {
-  gulp.watch('server/**/*.ts', ['build-server']);
+gulp.task('watch-build', ['build-typescript'], function() {
+  gulp.watch(typescriptGlobs, ['build-typescript']);
 });
 
 gulp.task('test', ['unit-test', 'build-tests']);
