@@ -1,0 +1,19 @@
+
+#result {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    &, textarea {
+        height: 70vh;
+    }
+    textarea {
+        resize: none;
+        border: none;
+        width: 100%;
+    }
+}
+
+.no-padding {
+    padding: 0 !important;
+}

@@ -1,0 +1,28 @@
+
+.details-panel {
+
+    background: #D9D9D9;
+
+    > header {
+        padding: 1em 1em 0;
+        h1,h2,h3,h4,h5,h6 {
+            margin: 0;
+        }
+    }
+
+    > .panel-body {
+        padding: 1em;
+        h2 {
+
+        }
+    }
+
+    @media (min-width: $screen-sm-min) {
+        position: absolute;
+        width: 400px;
+        bottom: 0;
+        right: 0;
+        top: 0;
+    }
+
+}

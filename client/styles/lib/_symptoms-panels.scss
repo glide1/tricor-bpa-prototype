@@ -1,0 +1,73 @@
+.symptoms-panel {
+
+    background-color: #fff;
+
+    @media (min-width: $screen-sm-min) {
+        position: absolute;
+        width: 320px;
+        top: 77px;
+        bottom: 0;
+        left: 0;
+    }
+
+    @media (min-width: $screen-md-min) {
+
+    }
+
+}
+
+.your-symptoms {
+
+    @include panel-variant(
+        $panel-default-border,
+        $panel-default-text,
+        $panel-default-heading-bg,
+        $panel-default-border);
+
+    .item {
+        width: 100%;
+        border-style: none none solid;
+    }
+
+}
+
+.symptom-chooser {
+
+    .search {
+        position: relative;
+        border-top: 2px solid #ddd;
+        input {
+            width: 100%;
+            border: none;
+            outline: none;
+            display: block;
+            line-height: 55px;
+            padding: 0 10px;
+            height: 55px;
+        }
+        i {
+            top: 20px;
+            right: 10px;
+            cursor: pointer;
+            position: absolute;
+        }
+    }
+
+    .ionic {
+        .item {
+            width: 100%;
+            border-left: none;
+            border-right: none;
+        }
+    }
+
+    @media (min-width: $screen-sm-min) {
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+
+    }
+
+}
