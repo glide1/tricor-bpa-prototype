@@ -18,6 +18,10 @@
         }
     }
 
+    @media (max-width: $screen-xs-max) {
+        display: none;
+    }
+
     @media (min-width: $screen-sm-min) {
         position: absolute;
         left: 30%;

@@ -1,17 +1,21 @@
 .symptoms-panel {
 
     background-color: #fff;
+    top: $header-height-sm;
 
     @media (min-width: $screen-sm-min) {
         position: absolute;
         width: 30%;
-        top: 77px;
         bottom: 0;
         left: 0;
     }
 
-    @media (min-width: $screen-md-min) {
+    @media (min-width: $screen-sm-min) {
+        top: $header-height-md;
+    }
 
+    @media (min-width: $screen-md-min) {
+        top: $header-height-lg;
     }
 
 }
