@@ -1,6 +1,25 @@
 /* jshint devel:true */
 (function () {
 
+    var scrolls = [],
+        timeout;
+
+    $('.iscroll').each(function() {
+       scrolls.push(new IScroll(this, {
+           mouseWheel: true,
+           scrollbars: false
+       }));
+    });
+
+    $(window).resize(function () {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            $.each(scrolls, function (i, scroll) {
+                scroll.refresh();
+            });
+        }, 150);
+    });
+
     $('body').on('click', 'button', function (e) {
         e.preventDefault();
         var href = $('#url').val();

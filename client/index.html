@@ -36,20 +36,25 @@
             </ul>
         </nav>
         <main>
+
             <div class="symptoms-panel">
 
                 <section class="your-symptoms">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">Your Symptoms</h1>
-                    </div>
-                    <div class="panel-body">
-                        <span>(select symptoms below)</span>
+                    <header class="panel-heading">
+                        <h2 class="panel-title">Your Symptoms</h2>
+                    </header>
+                    <div class="panel-body no-padding ionic iscroll">
+                        <ul class="list">
+                            <li class="item">
+                                <span class="text-muted">(select symptoms below)</span>
+                            </li>
+                        </ul>
                     </div>
                 </section>
 
                 <section class="symptom-chooser">
                     <form class="search">
-                        <input type="search" placeholder="filter symptoms..." />
+                        <input type="search" placeholder="find/ filter symptoms..." />
                         <i class="glyphicon glyphicon-search"></i>
                     </form>
                     <div class="ionic iscroll">
@@ -90,6 +95,18 @@
                                 </label>
                                 Checkbox
                             </li>
+                            <li class="item item-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox">
+                                </label>
+                                Checkbox
+                            </li>
+                            <li class="item item-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox">
+                                </label>
+                                Checkbox
+                            </li>
                         </ul>
                     </div>
                 </section>
@@ -97,6 +114,103 @@
                 <button class="btn btn-primary hide">Open</button>
 
             </div>
+
+            <section class="drug-list ionic">
+                <header class="hide">
+                    <h2 class="panel-title">Drug Listing</h2>
+                </header>
+                <div class="panel-body iscroll">
+                    <ul class="list">
+                        <li class="item">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                        <li class="item">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                        <li class="item active">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                        <li class="item">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                        <li class="item">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                        <li class="item">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                        <li class="item">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                        <li class="item">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                        <li class="item">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                        <li class="item">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                        <li class="item">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                        <li class="item">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <article class="details-panel ionic iscroll">
+                <div class="panel-body">
+                    <header>
+                        <h1>Acnotex Topical</h1>
+                    </header>
+                    <section>
+                        <h2>Description</h2>
+                        <p>Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Vestibulum id ligula porta felis euismod semper.</p>
+                        <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.</p>
+                    </section>
+                    <section>
+                        <h2>Uses</h2>
+                        <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                    </section>
+                    <section>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nulla vitae elit libero, a pharetra augue. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla. Sed posuere consectetur est at lobortis.
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile"></div>
+                            <div role="tabpanel" class="tab-pane" id="messages"></div>
+                            <div role="tabpanel" class="tab-pane" id="settings"></div>
+                        </div>
+
+                    </section>
+                </div>
+            </article>
+
         </main>
     </div>
 </div>
@@ -104,13 +218,7 @@
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
 <script src="../libs/jquery/dist/jquery.js"></script>
-<script src="../libs/angular/angular.js"></script>
-<script src="../libs/angular-animate/angular-animate.js"></script>
-<script src="../libs/angular-sanitize/angular-sanitize.js"></script>
-<script src="../libs/angular-ui-router/release/angular-ui-router.js"></script>
-<script src="../libs/ionic/js/ionic.js"></script>
-<script src="../libs/ionic/js/ionic-angular.js"></script>
-<script src="../libs/requirejs/require.js"></script>
+<script src="../libs/iscroll/build/iscroll.js"></script>
 <script src="../libs/mithril/mithril.min.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
@@ -133,5 +241,6 @@
 <!-- build:js scripts/main.js -->
 <script src="scripts/main.js"></script>
 <!-- endbuild -->
+
 </body>
 </html>
