@@ -64,9 +64,8 @@
         } else {
             this.remove(symptom);
         }
-
+        m.redraw();
         App.pub(App.values.SYMPTOM_SELECTION_CHANGE_EVENT, this.symptoms);
-
     }
 
     controller.prototype = {
