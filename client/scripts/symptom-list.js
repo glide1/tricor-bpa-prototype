@@ -1,17 +1,14 @@
 (function (App) {
 
     App.symptomList = {
-        view: view,
-        controller: controller
+        view: symptomListView,
+        controller: symptomListController
     };
 
-    function view(ctrl) {
+    function symptomListView(ctrl) {
         return [
             m('form.search', { config: formCfg }, [
-                m('input[type="search"][placeholder="find/ filter symptoms..."]', {
-                    value: ctrl.query(),
-                    oninput: m.withAttr('value', ctrl.query)
-                }),
+                filterView,
                 m('i.glyphicon.glyphicon-search', { onclick: ctrl.search })
             ]),
             m('.ionic.iscroll', [
@@ -29,13 +26,19 @@
         ];
     }
 
-    function controller() {
+    function symptomListController() {
 
         var me = this;
 
-        this.query = m.prop('');
+        this.list = new listCtrl({
+            filter: function (item) {
+                return (item.value().indexOf(me.filter.query()) > -1);
+            }
+        });
 
-        this.symptoms = m.request({url: '/fixtures/symptoms.json'}).then(function (data) {
+        this.filter = new filterCtrl();
+
+        this.symptoms = m.request({ url: '/fixtures/symptoms.json' }).then(function (data) {
             var symptoms = [];
             data.forEach(function (symptom) {
                 symptoms.push(new App.Symptom(symptom));
@@ -46,6 +49,25 @@
         this.search = function () {
 
         };
+
+    }
+
+    function filterView(ctrl) {
+        return m('input[type="search"][placeholder="find/ filter symptoms..."]', {
+            value: ctrl.query(),
+            oninput: m.withAttr('value', ctrl.query)
+        })
+    }
+
+    function filterCtrl() {
+        this.query = m.prop('');
+    }
+
+    function listView(ctrl) {
+
+    }
+
+    function listCtrl(opts) {
 
     }
 
