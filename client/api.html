@@ -22,7 +22,22 @@
 </main>
 
 <script src="../libs/jquery/dist/jquery.js"></script>
-<script src="scripts/main.js"></script>
+<script>
+    $('body').on('click', 'button', function (e) {
+        e.preventDefault();
+        var href = $('#url').val();
+        $.ajax({
+            url: '/api',
+            method: 'post',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify({"endpoint": "drug/label", search: href, limit:10}),
+            success: function (response) {
+                $('#result').html('<textarea disabled readonly>' + JSON.stringify(response, null, '    ') + '</textarea>');
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

@@ -15,14 +15,15 @@ var typescriptClientLocation = 'build/client/scripts/**/*.js';
 
 gulp.task('styles', function () {
     return gulp.src('client/styles/main.scss')
-        .pipe($.debug({ title: 'styles'}))
+        .pipe($.debug({ title: 'styles-in:'}))
         .pipe(sass({
             style: 'expanded',
             errLogToConsole: true,
             precision: 10
         }).on('error', sass.logError))
         .pipe($.autoprefixer({browsers: ['last 1 version']}))
-        .pipe(gulp.dest('.tmp/styles'));
+        .pipe(gulp.dest('.tmp/styles'))
+        .pipe($.debug({ title: 'styles-out:'}));
 });
 
 gulp.task('jshint', function () {
@@ -144,20 +145,20 @@ gulp.task('build-typescript', function() {
 var testTsProject = ts.createProject('tsconfig.json', { typescript: require('typescript'), sourceMap: true, sortOutput: true });
 
 gulp.task('build-tests', ['build-typescript'], function() {
-    
+
    var tsProject = testTsProject;
    var testGlob = 'test/unit/**/*.ts';
-   
+
    console.log("building changes on " + testGlob);
-   
+
    var tsResult = gulp.src(testGlob)
     .pipe($.debug({title:'build-tests'}))
     .pipe(sourceMaps.init())
     .pipe(ts(tsProject));
-   
+
    return tsResult.js
     .pipe(sourceMaps.write())
-    .pipe(gulp.dest('build'));       
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('unit-test', ['build-tests'], function() {

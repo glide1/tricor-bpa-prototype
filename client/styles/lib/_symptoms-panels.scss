@@ -1,3 +1,4 @@
+
 .symptoms-panel {
 
     background-color: #fff;
@@ -18,9 +19,13 @@
         top: $header-height-lg;
     }
 
+    @media (min-width: $screen-xl-min) {
+        width: 20%;
+    }
+
 }
 
-.your-symptoms {
+.symptom-selection {
 
     @include panel-variant(
         $panel-default-border,
@@ -28,9 +33,16 @@
         $panel-default-heading-bg,
         $panel-default-border);
 
+    .iscroll {
+        height: 162px;
+    }
+
     .item {
         width: 100%;
         border-style: none none solid;
+        &:last-child {
+            border-bottom: none;
+        }
     }
 
 }
@@ -68,9 +80,18 @@
     @media (min-width: $screen-sm-min) {
 
         position: absolute;
+        height: 73%;
         bottom: 0;
         right: 0;
         left: 0;
+
+        .ionic {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 57px;
+            bottom: 0;
+        }
 
     }
 

@@ -9,7 +9,7 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-
+    <link rel="stylesheet" href="../libs/ionic/css/ionic.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -39,7 +39,7 @@
 
             <div class="symptoms-panel">
 
-                <section class="your-symptoms">
+                <section class="symptom-selection">
                     <header class="panel-heading">
                         <h2 class="panel-title">Your Symptoms</h2>
                     </header>
@@ -52,64 +52,7 @@
                     </div>
                 </section>
 
-                <section class="symptom-chooser">
-                    <form class="search">
-                        <input type="search" placeholder="find/ filter symptoms..." />
-                        <i class="glyphicon glyphicon-search"></i>
-                    </form>
-                    <div class="ionic iscroll">
-                        <ul class="list">
-                            <li class="item item-checkbox">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                </label>
-                                Chest pain
-                            </li>
-                            <li class="item item-checkbox">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                </label>
-                                Headache
-                            </li>
-                            <li class="item item-checkbox">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                </label>
-                                Nasal congestion
-                            </li>
-                            <li class="item item-checkbox">
-                                <label class="checkbox">
-                                    <input type="checkbox" checked>
-                                </label>
-                                Acne
-                            </li>
-                            <li class="item item-checkbox">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                </label>
-                                Fever
-                            </li>
-                            <li class="item item-checkbox">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                </label>
-                                Checkbox
-                            </li>
-                            <li class="item item-checkbox">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                </label>
-                                Checkbox
-                            </li>
-                            <li class="item item-checkbox">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                </label>
-                                Checkbox
-                            </li>
-                        </ul>
-                    </div>
-                </section>
+                <section class="symptom-chooser"></section>
 
                 <button class="btn btn-primary hide">Open</button>
 
@@ -120,56 +63,7 @@
                     <h2 class="panel-title">Drug Listing</h2>
                 </header>
                 <div class="panel-body iscroll">
-                    <ul class="list">
-                        <li class="item">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                        <li class="item">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                        <li class="item active">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                        <li class="item">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                        <li class="item">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                        <li class="item">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                        <li class="item">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                        <li class="item">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                        <li class="item">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                        <li class="item">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                        <li class="item">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                        <li class="item">
-                            <h2>Venkman</h2>
-                            <p>Back off, man. I'm a scientist.</p>
-                        </li>
-                    </ul>
+                    <ul class="list"></ul>
                 </div>
             </section>
 
@@ -216,15 +110,18 @@
 </div>
 
 <!-- build:js scripts/vendor.js -->
-<!-- bower:js -->
 <script src="../libs/jquery/dist/jquery.js"></script>
+<script src="../libs/mithril/mithril.min.js"></script>
 <script src="../libs/iscroll/build/iscroll.js"></script>
-<script src="../libs/mithril/mithril.js"></script>
-<!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js scripts/main.js -->
 <script src="scripts/main.js"></script>
+<script src="scripts/drug.js"></script>
+<script src="scripts/symptom.js"></script>
+<script src="scripts/symptom-list.js"></script>
+<script src="scripts/drug-list.js"></script>
+<script src="scripts/app.js"></script>
 <!-- endbuild -->
 
 </body>

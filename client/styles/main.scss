@@ -30,14 +30,27 @@ html, body {
 
         }
 
+        @media (min-width: $screen-xl-min) {
+            width: 20%;
+        }
+
     }
 
     > main {
 
     }
 
+    ul {
+        margin-bottom: 0;
+    }
+
+
 }
 
+.iscroll {
+    overflow: auto;
+    position:relative;
+}
 .logo {
 
     display: block;
@@ -59,10 +72,6 @@ html, body {
         font-size: 2em;
     }
 
-}
-
-.iscroll {
-    position:relative;
 }
 
 @import "lib/symptoms-panels";
