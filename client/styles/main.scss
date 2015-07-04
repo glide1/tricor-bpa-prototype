@@ -44,6 +44,9 @@ html, body {
         margin-bottom: 0;
     }
 
+    strong {
+        @include font-bold;
+    }
 
 }
 
@@ -51,6 +54,7 @@ html, body {
     overflow: auto;
     position:relative;
 }
+
 .logo {
 
     display: block;
@@ -72,6 +76,10 @@ html, body {
         font-size: 2em;
     }
 
+}
+
+.load-more {
+    cursor: pointer;
 }
 
 @import "lib/symptoms-panels";

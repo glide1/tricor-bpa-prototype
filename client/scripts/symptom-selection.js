@@ -54,6 +54,7 @@
         this.remove(symptom);
         symptom.selected(false);
         App.pub(App.values.SYMPTOM_REMOVED_EVENT, symptom);
+        App.pub(App.values.SYMPTOM_SELECTION_CHANGE_EVENT, this.symptoms);
     }
 
     function symptomSelected(symptom) {

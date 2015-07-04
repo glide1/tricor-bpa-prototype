@@ -36,16 +36,25 @@
     }
 
     @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-        height: 40%;
         right: 0;
+        height: 40%;
+        .details-off & {
+            height: 100%;
+        }
     }
 
     @media (min-width: $screen-md-min) {
         width: 30%;
+        .details-off & {
+            width: 70%;
+        }
     }
 
     @media (min-width: $screen-xl-min) {
         left: 20%;
+        .details-off & {
+            width: 80%;
+        }
     }
 
 }

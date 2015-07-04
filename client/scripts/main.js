@@ -7,14 +7,24 @@
         on: amplify.subscribe,
         pub: amplify.publish,
         isMobile: isMobile,
-        values: Const()
+        values: Const(),
+        cfg: cfg()
     };
+
+    function cfg() {
+        return {
+            pageSize: 10,
+            endpoint: 'drug/label',
+            serviceURI: '/api'
+        }
+    }
 
     function Const() {
         return {
             'SYMPTOM_SELECTED_EVENT': 'SYMPTOM_SELECTED_EVENT',
             'SYMPTOM_REMOVED_EVENT': 'SYMPTOM_REMOVED_EVENT',
-            'SYMPTOM_SELECTION_CHANGE_EVENT': 'SYMPTOM_SELECTION_CHANGE_EVENT'
+            'SYMPTOM_SELECTION_CHANGE_EVENT': 'SYMPTOM_SELECTION_CHANGE_EVENT',
+            'DRUG_SELECTED_EVENT': 'DRUG_SELECTED_EVENT'
         };
     }
 

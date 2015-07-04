@@ -1,8 +1,15 @@
 (function (App) {
     'use strict';
 
+    var id = 0;
+
     App.Drug = function (fdaDescriptor) {
-        // var fdaDescriptor =  fdaDescriptor;
+        this.id = (function (id) {
+            return function () {
+                return id;
+            }
+        })(id++);
+        this.selected = m.prop(false);
         this.getDescriptor = function () {
             return fdaDescriptor;
         }
@@ -36,7 +43,7 @@
         },
         getGeneric: function () {
             var data = this.getDescriptor();
-            return data.generic_name;
+            return data.openfda.generic_name;
         },
         getWarnings: function () {
             var data = this.getDescriptor();
@@ -50,7 +57,7 @@
     };
 
     function array(a) {
-        return a.join(', ') + '.';
+        return a ? (a.join(', ') + '.') : '(not available)';
     }
 
 }) (App);
