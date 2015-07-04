@@ -8,20 +8,11 @@
     function symptomListView(ctrl) {
         return [
             m('form.search', { config: formCfg }, [
-                filterView,
+                filterView(ctrl.filter),
                 m('i.glyphicon.glyphicon-search', { onclick: ctrl.search })
             ]),
             m('.ionic.iscroll', [
-                m('ul.list', [
-                    ctrl.symptoms().map(function (symptom) {
-                        return m('li.item.item-checkbox', [
-                            m('label.checkbox', [
-                                m('input[type="checkbox"]', {value: symptom.id()})
-                            ]),
-                            symptom.value()
-                        ]);
-                    })
-                ])
+                listView(ctrl.list)
             ])
         ];
     }
@@ -32,19 +23,11 @@
 
         this.list = new listCtrl({
             filter: function (item) {
-                return (item.value().indexOf(me.filter.query()) > -1);
+                return (item.value().toLowerCase().indexOf(me.filter.query().toLowerCase()) > -1);
             }
         });
 
         this.filter = new filterCtrl();
-
-        this.symptoms = m.request({ url: '/fixtures/symptoms.json' }).then(function (data) {
-            var symptoms = [];
-            data.forEach(function (symptom) {
-                symptoms.push(new App.Symptom(symptom));
-            });
-            return symptoms;
-        });
 
         this.search = function () {
 
@@ -64,10 +47,31 @@
     }
 
     function listView(ctrl) {
-
+        return m('ul.list', [
+            ctrl.symptoms().filter(ctrl.filter).map(function (symptom) {
+                return m('li.item.item-checkbox', [
+                    m('label.checkbox', [
+                        m('input[type="checkbox"]', { value: symptom.id() })
+                    ]),
+                    symptom.value()
+                ]);
+            })
+        ]);
     }
 
     function listCtrl(opts) {
+
+        this.symptoms = m.request({
+            url: '/fixtures/symptoms.json'
+        }).then(function (data) {
+            var symptoms = [];
+            data.forEach(function (symptom) {
+                symptoms.push(new App.Symptom(symptom));
+            });
+            return symptoms;
+        });
+
+        this.filter = opts.filter;
 
     }
 
