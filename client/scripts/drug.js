@@ -32,7 +32,7 @@
         },
         getName: function () {
             var data = this.getDescriptor();
-            return data.openfda.brand_name;
+            return data.openfda.brand_name || 'Unnamed';
         },
         getGeneric: function () {
             var data = this.getDescriptor();

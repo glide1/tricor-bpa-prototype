@@ -23,25 +23,45 @@
 
         this.meta = null;
 
-        this.drugs = m.request({
-            url: '/api',
-            method: 'post',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: { 'endpoint': 'drug/label', search: '', limit:10 }
-        }).then(function (data) {
+        find();
 
-            me.meta = data.meta;
+        App.on(App.values.SYMPTOM_SELECTION_CHANGE_EVENT, find);
 
-            var results = [];
+        function find(symptoms) {
 
-            data.results && data.results.forEach(function (drug) {
-                results.push(new App.Drug(drug));
+            var q = [];
+
+            if (symptoms && symptoms.length) {
+                q = symptoms.map(function (item) {
+                    return '"' + item.value() + '"';
+                });
+            }
+
+            me.drugs = m.request({
+                url: '/api',
+                method: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: {
+                    limit:10,
+                    endpoint: 'drug/label',
+                    search: q.join('+AND+').replace(/\s/g, '+')
+                }
+            }).then(function (data) {
+
+                me.meta = data.meta ? data.meta : {};
+
+                var results = [];
+
+                data.results && data.results.forEach(function (drug) {
+                    results.push(new App.Drug(drug));
+                });
+
+                return results;
+
             });
 
-            return results;
-
-        });
+        }
 
     }
 

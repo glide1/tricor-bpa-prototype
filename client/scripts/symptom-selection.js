@@ -57,11 +57,15 @@
     }
 
     function symptomSelected(symptom) {
+
         if (symptom.selected()) {
             this.add(symptom);
         } else {
             this.remove(symptom);
         }
+
+        App.pub(App.values.SYMPTOM_SELECTION_CHANGE_EVENT, this.symptoms);
+
     }
 
     controller.prototype = {

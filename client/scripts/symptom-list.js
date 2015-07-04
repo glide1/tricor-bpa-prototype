@@ -35,7 +35,7 @@
     }
 
     function filterView(ctrl) {
-        return m('input[type="search"][placeholder="find/ filter symptoms..."]', {
+        return m('input[type="search"][placeholder="find/filter symptoms..."]', {
             value: ctrl.query(),
             oninput: m.withAttr('value', ctrl.query)
         })
