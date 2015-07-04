@@ -9,16 +9,12 @@
     function view(ctrl) {
         var drug = ctrl.drug();
         return drug ? [
-            m('header', [
-                m('h1', drug.getName()),
-                m('p', drug.getPurpose())
-            ]),
+            m('header', [m('h1', drug.getName())]),
             m('section', [
-                m('p', [
-                    m('strong', 'Generic Name: '),
-                    m('span', drug.getGeneric())
-                ]),
-                m('p', drug.getIndications())
+                m('h2', 'General Information'),
+                m('p', [m('strong', 'Purpose: '), drug.getPurpose()]),
+                m('p', [m('strong', 'Generic Name: '), drug.getGeneric()]),
+                m('p', m.trust(drug.getIndications().replace(/\n/g, '<br/>')))
             ]),
             m('section', [
                 m('h2', 'Warnings'),
@@ -30,7 +26,7 @@
             ]),
             m('section', [
                 m('h2', 'Dosage'),
-                m('p', drug.getInstructions())
+                m('p', m.trust(drug.getInstructions().replace(/\n/g, '<br/>')))
             ]),
         ] : '';
     }

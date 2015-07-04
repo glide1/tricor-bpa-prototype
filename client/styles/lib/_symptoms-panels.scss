@@ -2,13 +2,15 @@
 .symptoms-panel {
 
     background-color: #fff;
+
+    position: absolute;
     top: $header-height-sm;
+    width: 100%;
+    bottom: 0;
+    left: 0;
 
     @media (min-width: $screen-sm-min) {
-        position: absolute;
         width: 30%;
-        bottom: 0;
-        left: 0;
     }
 
     @media (min-width: $screen-sm-min) {
@@ -27,14 +29,24 @@
 
 .symptom-selection {
 
+    position: absolute;
+    height: 30%;
+    right: 0;
+    left: 0;
+    top: 0;
+
     @include panel-variant(
         $panel-default-border,
         $panel-default-text,
         $panel-default-heading-bg,
         $panel-default-border);
 
-    .iscroll {
-        height: 162px;
+    .panel-body {
+        position: absolute;
+        bottom: 0;
+        top: 40px;
+        right: 0;
+        left: 0;
     }
 
     .item {
@@ -49,9 +61,26 @@
 
 .symptom-chooser {
 
+    position: absolute;
+    height: 70%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    .panel-body {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 58px;
+        bottom: 0;
+    }
+
     .search {
+
         position: relative;
         border-top: 2px solid #ddd;
+        border-bottom: 1px solid #ddd;
+
         input {
             width: 100%;
             border: none;
@@ -61,37 +90,36 @@
             padding: 0 10px;
             height: 55px;
         }
-        i {
-            top: 20px;
-            right: 10px;
+
+        button {
+
+            top: 0;
+            right: 0;
             cursor: pointer;
             position: absolute;
+
+            border: none;
+            background: none;
+            padding: 15px 10px;
+            margin: 0;
+
         }
+
     }
 
-    .ionic {
+    .panel-body {
+        padding: 0;
         .item {
             width: 100%;
             border-left: none;
             border-right: none;
+            &:first-child {
+                border-top: none;
+            }
         }
     }
 
     @media (min-width: $screen-sm-min) {
-
-        position: absolute;
-        height: 73%;
-        bottom: 0;
-        right: 0;
-        left: 0;
-
-        .ionic {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 57px;
-            bottom: 0;
-        }
 
     }
 

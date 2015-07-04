@@ -1,20 +1,21 @@
 
-@charset "utf-8";
+@import "../../../libs/ionic/scss/ionicons/ionicons-variables";
+@import "../../../libs/ionic/scss/ionicons/ionicons-font";
 
 .ionic {
 
     @import
         // Ionicons
-    "../../../libs/ionic/scss/ionicons/ionicons.scss",
+    "../../../libs/ionic/scss/ionicons/ionicons-icons",
 
         // Variables
     "../../../libs/ionic/scss/mixins",
     "../../../libs/ionic/scss/variables",
 
         // Base
-    "../../../libs/ionic/scss/reset",
-    "../../../libs/ionic/scss/scaffolding",
-    "../../../libs/ionic/scss/type",
+    //"../../../libs/ionic/scss/reset",
+    //"../../../libs/ionic/scss/scaffolding",
+    //"../../../libs/ionic/scss/type",
 
         // Components
     "../../../libs/ionic/scss/action-sheet",

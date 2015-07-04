@@ -10,11 +10,15 @@
         return [
             m('form.search', { config: formCfg }, [
                 filterView(ctrl.filter),
-                m('i.glyphicon.glyphicon-search', { onclick: ctrl.search })
+                ctrl.filter.query()
+                    ? m('button.ionic.unstyled', { onclick: ctrl.clear }, m('i.ion-ios-close-outline'))
+                    : '',
             ]),
-            m('div.ionic.iscroll', [
-                listView(ctrl.list)
-            ])
+            m('div.ionic.iscroll.panel-body', {
+                config: App.isMobile() ? function (e, i) {
+                    App.cfg.scroll.fn(e, i, ctrl)
+                } : App.noop
+            }, listView(ctrl.list))
         ];
     }
 
@@ -32,6 +36,9 @@
 
         this.filter = new filterCtrl();
 
+        this.clear = function () {
+            me.filter.query('');
+        };
     }
 
     function filterView(ctrl) {
