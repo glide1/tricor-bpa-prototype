@@ -133,13 +133,15 @@ var tsProject = ts.createProject('tsconfig.json', { typescript: require('typescr
 
 gulp.task('build-typescript', function() {
   var tsResult = gulp.src(typescriptGlobs)
-    .pipe($.debug({ title: 'build-typescript' }))
+    .pipe($.debug({ title: 'build-typescript: in' }))
     .pipe(sourceMaps.init())
     .pipe(ts(tsProject));
 
   return tsResult.js
     .pipe(sourceMaps.write())
-    .pipe(gulp.dest('build'));
+    .pipe($.changed('build', {hasChanged: $.changed.compareSha1Digest}))
+    .pipe(gulp.dest('build'))
+    .pipe($.debug({ title:'build-typescript: out' }));
 });
 
 var testTsProject = ts.createProject('tsconfig.json', { typescript: require('typescript'), sourceMap: true, sortOutput: true });
