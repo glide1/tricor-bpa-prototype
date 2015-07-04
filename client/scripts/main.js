@@ -12,7 +12,8 @@
 
     function Const() {
         return {
-            'SYMPTOM_SELECTED_EVENT': 'SYMPTOM_SELECTED_EVENT'
+            'SYMPTOM_SELECTED_EVENT': 'SYMPTOM_SELECTED_EVENT',
+            'SYMPTOM_REMOVED_EVENT': 'SYMPTOM_REMOVED_EVENT'
         };
     }
 

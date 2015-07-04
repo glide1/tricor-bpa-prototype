@@ -9,7 +9,14 @@
     function view(ctrl) {
         if (ctrl.symptoms.length) {
             return ctrl.symptoms.map(function (symptom) {
-                return m('li.item', symptom.value());
+                return m('li.item.item-button-right', [
+                    symptom.value(),
+                    m('buttom.button', {
+                        onclick: function () {
+                            ctrl.removeSymptom(symptom);
+                        }
+                    }, m('i.icon.ion-ios-trash'))
+                ]);
             });
         } else {
             return [
@@ -43,6 +50,12 @@
         this.symptoms = clean;
     }
 
+    function removeSymptom(symptom) {
+        this.remove(symptom);
+        symptom.selected(false);
+        App.pub(App.values.SYMPTOM_REMOVED_EVENT, symptom);
+    }
+
     function symptomSelected(symptom) {
         if (symptom.selected()) {
             this.add(symptom);
@@ -54,6 +67,7 @@
     controller.prototype = {
         add: add,
         remove: remove,
+        removeSymptom: removeSymptom,
         symptomSelected: symptomSelected
     };
 

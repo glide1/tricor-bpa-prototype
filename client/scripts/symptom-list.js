@@ -32,10 +32,6 @@
 
         this.filter = new filterCtrl();
 
-        this.search = function () {
-
-        };
-
     }
 
     function filterView(ctrl) {
@@ -57,7 +53,8 @@
                         value: symptom.id(),
                         checked: symptom.selected(),
                         onchange: function (e) {
-                            ctrl.itemChecked(this.value, this.checked, e);
+                            symptom.selected(this.checked);
+                            ctrl.onItemChecked(symptom);
                         }
                     })
                 ]),
@@ -83,24 +80,28 @@
 
         this.filter = opts.filter;
 
+        App.on(App.values.SYMPTOM_REMOVED_EVENT, this.itemChecked.bind(this));
+
     }
 
     listCtrl.prototype = {
-        itemChecked: function (symptomid, isChecked) {
+        itemChecked: function (oSymptom) {
 
             for (var symptom = null,
                      symptoms = this.symptoms(),
                      l = symptoms.length,
                      i = 0; i < l; ++i) {
-                if (symptoms[i].id() == symptomid) {
+                if (symptoms[i].id() == oSymptom.id()) {
                     symptom = symptoms[i];
                     break;
                 }
             }
 
-            symptom.selected(isChecked);
-            App.pub(App.values.SYMPTOM_SELECTED_EVENT, symptom);
+            symptom.selected(oSymptom.selected());
 
+        },
+        onItemChecked: function (symptom) {
+            App.pub(App.values.SYMPTOM_SELECTED_EVENT, symptom);
         }
     };
 
