@@ -49,11 +49,12 @@
             lastQuery;
 
         this.meta = null;
-
+        this.drugs = m.prop([]);
         find();
 
         App.on(App.values.SYMPTOM_SELECTION_CHANGE_EVENT, function (symptoms) {
             pos = 0;
+            me.drugs([]);
             find(symptoms);
         });
 
@@ -89,34 +90,29 @@
                 });
             }
 
-            // TODO improve pagination by skipping and getting the next set of results instead of refetching all
             $p = m.request({
                 url: App.cfg.serviceURI,
                 method: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',
                 data: {
-                    // skip: pos,
-                    limit: App.cfg.pageSize + pos,
+                    skip: pos,
+                    limit: App.cfg.pageSize,
                     endpoint: App.cfg.endpoint,
                     search: q.join('+AND+').replace(/\s/g, '+')
-                }
+                },  
+                unwrapSuccess: function(response) {
+                    me.meta = response.meta ? response.meta : {};
+                    return response.results;
+                },
+                unwrapError: function(response) {
+                    me.meta = {};
+                    me.drugs([]);
+                },
+                type: App.Drug
+            }).then(function( data ) {
+                me.drugs(me.drugs().concat(data));
             });
-
-            me.drugs = $p.then(function (data) {
-
-                me.meta = data.meta ? data.meta : {};
-
-                var results = [];
-
-                data.results && data.results.forEach(function (drug) {
-                    results.push(new App.Drug(drug));
-                });
-
-                return results;
-
-            });
-
         };
 
     }
