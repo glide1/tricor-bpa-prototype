@@ -105,7 +105,7 @@
             }
 
             symptom.selected(oSymptom.selected());
-
+            m.redraw();
         },
         onItemChecked: function (symptom) {
             App.pub(App.values.SYMPTOM_SELECTED_EVENT, symptom);
