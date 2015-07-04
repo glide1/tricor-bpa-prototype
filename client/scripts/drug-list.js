@@ -80,8 +80,7 @@
 
         function find(symptoms) {
 
-            var q = [],
-                $p;
+            var q = [];
 
             if (symptoms && symptoms.length) {
                 lastQuery = symptoms;
@@ -90,7 +89,7 @@
                 });
             }
 
-            $p = m.request({
+            m.request({
                 url: App.cfg.serviceURI,
                 method: 'POST',
                 dataType: 'json',
@@ -100,7 +99,7 @@
                     limit: App.cfg.pageSize,
                     endpoint: App.cfg.endpoint,
                     search: q.join('+AND+').replace(/\s/g, '+')
-                },  
+                },
                 unwrapSuccess: function(response) {
                     me.meta = response.meta ? response.meta : {};
                     return response.results;
@@ -113,6 +112,7 @@
             }).then(function( data ) {
                 me.drugs(me.drugs().concat(data));
             });
+
         };
 
     }
