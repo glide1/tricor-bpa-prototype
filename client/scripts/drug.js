@@ -1,4 +1,5 @@
 (function (App) {
+    'use strict';
 
     App.Drug = function (fdaDescriptor) {
         // var fdaDescriptor =  fdaDescriptor;

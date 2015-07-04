@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <title>ui</title>
+    <title>OpenMedipedia: Find Medications For Your Symptoms</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -22,103 +22,89 @@
     <!-- endbuild -->
 </head>
 <body>
-<div class="st-container">
-    <div id="app" class="st-pusher">
-        <header><a class="logo" href="/">OpenMedipedia</a></header>
-        <nav class="st-menu st-effect-3">
-            <h2 class="icon icon-lab">Sidebar</h2>
-            <ul>
-                <li><a class="icon icon-data" href="#">Data Management</a></li>
-                <li><a class="icon icon-location" href="#">Location</a></li>
-                <li><a class="icon icon-study" href="#">Study</a></li>
-                <li><a class="icon icon-photo" href="#">Collections</a></li>
-                <li><a class="icon icon-wallet" href="#">Credits</a></li>
-            </ul>
-        </nav>
-        <main>
 
-            <div class="symptoms-panel">
+<div id="app">
+    <header><a class="logo" href="/">OpenMedipedia</a></header>
+    <main>
 
-                <section class="symptom-selection">
-                    <header class="panel-heading">
-                        <h2 class="panel-title">Your Symptoms</h2>
-                    </header>
-                    <div class="panel-body no-padding ionic iscroll">
-                        <ul class="list">
-                            <li class="item">
-                                <span class="text-muted">(select symptoms below)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
+        <div class="symptoms-panel">
 
-                <section class="symptom-chooser"></section>
-
-                <button class="btn btn-primary hide">Open</button>
-
-            </div>
-
-            <section class="drug-list ionic">
-                <header class="hide">
-                    <h2 class="panel-title">Drug Listing</h2>
+            <section class="symptom-selection">
+                <header class="panel-heading">
+                    <h2 class="panel-title">Your Symptoms</h2>
                 </header>
-                <div class="panel-body iscroll">
+                <div class="panel-body no-padding ionic iscroll">
                     <ul class="list"></ul>
                 </div>
             </section>
 
-            <article class="details-panel ionic iscroll">
-                <div class="panel-body">
-                    <header>
-                        <h1>Acnotex Topical</h1>
-                    </header>
-                    <section>
-                        <h2>Description</h2>
-                        <p>Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Vestibulum id ligula porta felis euismod semper.</p>
-                        <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.</p>
-                    </section>
-                    <section>
-                        <h2>Uses</h2>
-                        <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-                    </section>
-                    <section>
+            <section class="symptom-chooser"></section>
 
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-                        </ul>
+            <button class="btn btn-primary hide">Open</button>
 
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">
-                                Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nulla vitae elit libero, a pharetra augue. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla. Sed posuere consectetur est at lobortis.
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="profile"></div>
-                            <div role="tabpanel" class="tab-pane" id="messages"></div>
-                            <div role="tabpanel" class="tab-pane" id="settings"></div>
+        </div>
+
+        <section class="drug-list ionic">
+            <header class="hide">
+                <h2 class="panel-title">Drug Listing</h2>
+            </header>
+            <div class="panel-body iscroll">
+                <ul class="list"></ul>
+            </div>
+        </section>
+
+        <article class="details-panel ionic iscroll">
+            <div class="panel-body">
+                <header>
+                    <h1>Acnotex Topical</h1>
+                </header>
+                <section>
+                    <h2>Description</h2>
+                    <p>Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Vestibulum id ligula porta felis euismod semper.</p>
+                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.</p>
+                </section>
+                <section>
+                    <h2>Uses</h2>
+                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                </section>
+                <section>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nulla vitae elit libero, a pharetra augue. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec ullamcorper nulla non metus auctor fringilla. Sed posuere consectetur est at lobortis.
                         </div>
+                        <div role="tabpanel" class="tab-pane" id="profile"></div>
+                        <div role="tabpanel" class="tab-pane" id="messages"></div>
+                        <div role="tabpanel" class="tab-pane" id="settings"></div>
+                    </div>
 
-                    </section>
-                </div>
-            </article>
+                </section>
+            </div>
+        </article>
 
-        </main>
-    </div>
+    </main>
 </div>
 
 <!-- build:js scripts/vendor.js -->
 <script src="../libs/jquery/dist/jquery.js"></script>
 <script src="../libs/mithril/mithril.min.js"></script>
-<script src="../libs/iscroll/build/iscroll.js"></script>
+<script src="../libs/amplify/lib/amplify.core.js"></script>
 <!-- endbuild -->
 
 <!-- build:js scripts/main.js -->
 <script src="scripts/main.js"></script>
 <script src="scripts/drug.js"></script>
 <script src="scripts/symptom.js"></script>
+<script src="scripts/symptom-selection.js"></script>
 <script src="scripts/symptom-list.js"></script>
 <script src="scripts/drug-list.js"></script>
 <script src="scripts/app.js"></script>

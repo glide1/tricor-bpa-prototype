@@ -1,4 +1,5 @@
 (function (App) {
+    'use strict';
 
     App.symptomList = {
         view: symptomListView,
@@ -11,7 +12,7 @@
                 filterView(ctrl.filter),
                 m('i.glyphicon.glyphicon-search', { onclick: ctrl.search })
             ]),
-            m('.ionic.iscroll', [
+            m('div.ionic.iscroll', [
                 listView(ctrl.list)
             ])
         ];
@@ -23,7 +24,9 @@
 
         this.list = new listCtrl({
             filter: function (item) {
-                return (item.value().toLowerCase().indexOf(me.filter.query().toLowerCase()) > -1);
+                var value = item.value().toLowerCase(),
+                    query = me.filter.query().toLowerCase();
+                return (value.indexOf(query) > -1);
             }
         });
 
@@ -47,16 +50,23 @@
     }
 
     function listView(ctrl) {
-        return m('ul.list', [
-            ctrl.symptoms().filter(ctrl.filter).map(function (symptom) {
-                return m('li.item.item-checkbox', [
-                    m('label.checkbox', [
-                        m('input[type="checkbox"]', { value: symptom.id() })
-                    ]),
-                    symptom.value()
-                ]);
-            })
-        ]);
+        var results = ctrl.symptoms().filter(ctrl.filter).map(function (symptom) {
+            return m('li.item.item-checkbox', [
+                m('label.checkbox', [
+                    m('input[type="checkbox"]', {
+                        value: symptom.id(),
+                        checked: symptom.selected(),
+                        onchange: function (e) {
+                            ctrl.itemChecked(this.value, this.checked, e);
+                        }
+                    })
+                ]),
+                symptom.value()
+            ]);
+        });
+        return m('ul.list', results.length ? results : m('li.item.text-center', [
+            m('span.text-muted', '(no match found)')
+        ]));
     }
 
     function listCtrl(opts) {
@@ -75,19 +85,30 @@
 
     }
 
+    listCtrl.prototype = {
+        itemChecked: function (symptomid, isChecked) {
+
+            for (var symptom = null,
+                     symptoms = this.symptoms(),
+                     l = symptoms.length,
+                     i = 0; i < l; ++i) {
+                if (symptoms[i].id() == symptomid) {
+                    symptom = symptoms[i];
+                    break;
+                }
+            }
+
+            symptom.selected(isChecked);
+            App.pub(App.values.SYMPTOM_SELECTED_EVENT, symptom);
+
+        }
+    };
+
     function formCfg (element, isInitialized) {
         if (isInitialized) return;
         App.$(element).submit(function (e) {
             e.preventDefault();
         })
-    }
-
-    function ulCfg(element, initialized) {
-        if (initialized) {
-
-        } else {
-            new IScroll(element, App.iscrollCfg);
-        }
     }
 
 })(App);
